@@ -1,0 +1,11 @@
+
+{% block content %}
+<h1>{{ user.username }}'s Profile</h1>
+<p>Name: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Registration Date: {{ user.date_joined }}</p>
+<p>Age: {{ profile.age }}</p>
+<p>Phone Number: {{ profile.phone_number }}</p>
+<a href="{% url 'create_item' %}">Post a New Item</a>
+
+{% endblock %}

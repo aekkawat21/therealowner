@@ -1,0 +1,23 @@
+{% block content %}
+<h2>Items for Sale</h2>
+<ul>
+    {% for item in items %}
+    <li><a href="{% url 'item_detail' item.id %}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+<select name="category">
+    <option value="">เลือกหมวดหมู่</option>
+    {% for cat in categories %}
+    <option value="{{ cat.name }}">{{ cat.name }}</option>
+    {% endfor %}
+</select>
+
+<form method="GET" action="{% url 'item_list' %}">
+    <input type="text" name="q" placeholder="ค้นหาสินค้า...">
+    <button type="submit">ค้นหา</button>
+</form>
+
+{% comment %}
+<li><a href="{% url 'item_detail' item.id %}">{{ item.title }}</a></li>
+{% endcomment %}

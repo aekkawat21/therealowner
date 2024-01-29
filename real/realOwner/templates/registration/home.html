@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="home.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, ">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .main-container {
+           text-align: center;
+        }
+
+       .large-frame {
+           border: 2px solid #333;
+           padding: 20px;
+           border-radius: 30px;  
+           margin-bottom: 10px; 
+        }
+
+        .small-frame {
+           border: 2px solid #888;
+           padding: 10px;
+           border-radius: 5px;
+        }
+        
+        .button-container {
+            margin: 40px 30px 350px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 10px;
+            font-size: 15px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #71bef2;
+            color: #fff;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color:red text-align-center;">The Real Owner</h1>
+    <div class="main-container">
+        <div class="button-container">           
+            <a href="{% url 'register' %}" class="button">ลงทะเบียน</a>
+            <a href="{% url 'login' %}" class="button">เข้าสู่ระบบ</a>
+        </div>
+        <div class="large-frame">
+            <h2 class="small-frame">
+                <p style="color:rgb(17, 17, 17);font-family:verdana;
+                font-size:70%;text-align:center;">ชื่ออุปกรณ์:cc</p>
+                <img src="https://i.pinimg.com/564x/da/28/aa/da28aad2f8721ec2148c496ee658008f.jpg" alt="รูป" width="100" height="100">              
+                <p style="color:rgb(17, 17, 17);font-family:verdana;
+                font-size:70%;text-align:center;">name:vv </p>
+                <p style="color:rgb(17, 17, 17);font-family:verdana;
+                font-size:70%;text-align:center;">Phone:0000 </p>
+            </h2>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
