@@ -52,3 +52,22 @@ class Profile(models.Model):
       
     def __str__(self):
         return self.user
+    
+class Review(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])  # Ratings from 1 to 5
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Review by {self.author.username} on {self.item.title}'
+
+class edit_user_profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.IntegerField(blank=True, null=True)
+    phone_number = models.CharField(max_length=15)
+    bio = models.TextField(blank=True)
+    
+    def __str__(self):
+        return self.user

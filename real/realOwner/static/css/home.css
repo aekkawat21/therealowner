@@ -1,0 +1,113 @@
+.container {
+    width: 100vw; /* กว้างเท่ากับ 100% ของ viewport width */
+    height: 100vh; /* สูงเท่ากับ 100% ของ viewport height */
+    margin: 0; /* ไม่มีระยะขอบ */
+    padding: 0; /* ไม่มีระยะขอบภายใน */
+    display: flex; /* ใช้ flexbox เพื่อจัดการ layout */
+    justify-content: center; /* จัดกลางแนวนอน */
+    align-items: center; /* จัดกลางแนวตั้ง */
+  }
+  
+  .card {
+    flex: 1; /* แต่ละ card จะขยายเต็มพื้นที่ที่มี */
+    margin: 10px; /* ระยะขอบรอบ card */
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0; /* สีพื้นหลัง */
+  }
+  
+  .card img {
+    width: 100%; /* ภาพขยายเต็ม card */
+    height: auto; /* ความสูงปรับตามสัดส่วน */
+  }
+  
+  .card-text {
+    font-size: 1.5vw; /* ขนาดตัวอักษรขึ้นอยู่กับขนาดของ viewport */
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+.button-container {
+    display: flex;
+    margin: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #d1cecec4;
+    color: #000000;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 25px;
+}
+
+.large-frame {
+    border: 2px solid #333;
+    padding: 25px;
+    border-radius: 30px;
+    margin: 10px;
+}
+
+.small-frame {
+    border: 2px solid #888;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.device-name {
+    color: rgb(17, 17, 17);
+    font-family: verdana;
+    font-size: 70%;
+    text-align: center;
+}
+
+.device-info {
+    color: rgb(17, 17, 17);
+    font-family: verdana;
+    font-size: 70%;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; /* This separates the title and auth sections */
+    align-items: center; /* Aligns items vertically in the center */
+    padding: 0 10px; /* Provides padding on the left and right */
+  }
+  
+  .title {
+    /* Styles for the title */
+    margin-right: auto; /* This will push everything else to the right */
+  }
+  
+  .auth {
+    /* Container for registration and login */
+    display: flex;
+    gap: 10px; /* Space between registration and login */
+  }
+  
+  .registration, .login {
+    /* Styles for registration and login */
+    padding: 10px 30px; /* Example padding */
+    cursor: pointer; /* Changes the cursor to signify it's clickable */
+    /* Add any additional styling such as background, border, etc. */
+  }
+  

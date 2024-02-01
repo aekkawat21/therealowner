@@ -6,6 +6,12 @@
 <p>Registration Date: {{ user.date_joined }}</p>
 <p>Age: {{ profile.age }}</p>
 <p>Phone Number: {{ profile.phone_number }}</p>
-<a href="{% url 'create_item' %}">Post a New Item</a>
+
+<form method="post" action="{% url 'home' %}">
+    {% csrf_token %}
+    <button type="submit">ออกจากระบบ</button>
+  </form>
+  <a href="{% url 'edit_user_profile' %}">แก้ไขโปรไฟล์</a>
+  <a href="{% url 'create_item' %}">ลงทะเบียน</a>
 
 {% endblock %}

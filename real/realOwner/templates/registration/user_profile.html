@@ -1,15 +1,7 @@
-{% extends 'base.html' %}
+
 
 {% block content %}
 <h1>{{ profile_user.username }}'s Profile</h1>
 <p>Email: {{ profile_user.email }}</p>
 <!-- Add more user details if needed -->
-<h2>Items Posted by {{ profile_user.username }}</h2>
-<ul>
-    {% for item in items %}
-    <li><a href="{% url 'item_detail' item.id %}">{{ item.title }}</a></li>
-    {% empty %}
-    <li>No items posted yet.</li>
-    {% endfor %}
-</ul>
 {% endblock %}

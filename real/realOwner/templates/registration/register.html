@@ -6,7 +6,8 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Register</button>
+        <button type="submit">ยืนยัน</button>
+        <button type="button" onclick="history.back()">กลับ</button>
     </form>
 </div>
 {% endblock %}
