@@ -1,15 +1,18 @@
 {% block content %}
-<h2>รายการสินค้า</h2>
+<h2>อุปกรณ์ที่ลงทะเบียน</h2>
 <ul>
-    {% for item in items %}
-        <li><a href="{% url 'item_list' username=user.username %}">Item List</a>
-        </a></li>
+    {% for item in page_obj %}
+        <li><a href="{% url 'item_detail' item.id %}">{{ item.brand }}</a></li>
+    {% empty %}
+        <li>ไม่พบอุปกรณ์ที่ลงทะเบียน.</li>
     {% endfor %}
 </ul>
 
 <form method="GET" action="{% url 'item_list' %}">
     <select name="category">
         <option value="">เลือกหมวดหมู่</option>
+        <option>33</option>
+        
         {% for cat in categories %}
             <option value="{{ cat.name }}">{{ cat.name }}</option>
         {% endfor %}
@@ -30,19 +33,20 @@
 
 <div class="pagination">
     <span class="step-links">
-        {% if items.has_previous %}
+        {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; หน้าแรก</a>
-            <a href="?page={{ items.previous_page_number }}">ก่อนหน้า</a>
+            <a href="?page={{ page_obj.previous_page_number }}">ก่อนหน้า</a>
         {% endif %}
 
         <span class="current">
-            หน้า {{ items.number }} จาก {{ items.paginator.num_pages }}.
+            หน้า {{ page_obj.number }} จาก {{ page_obj.paginator.num_pages }}.
         </span>
 
-        {% if items.has_next %}
-            <a href="?page={{ items.next_page_number }}">ถัดไป</a>
-            <a href="?page={{ items.paginator.num_pages }}">หน้าสุดท้าย &raquo;</a>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">ถัดไป</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">หน้าสุดท้าย &raquo;</a>
         {% endif %}
     </span>
 </div>
+<button onclick="history.back()" class="back-btn">ย้อนกลับ</button>
 {% endblock %}

@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    <div class="background">
     <div>    
     <header>
         <div class="header"></div>
@@ -19,44 +20,73 @@
     </header>
     <div class="header-container">
         <div class="auth">
-             <a href="{% url 'register' %}" class="button">ลงทะเบียน</a> 
+             <a href="{% url 'register' %}" class="button">สร้างบัญชี</a> 
              <a href="{% url 'login' %}" class="button">เข้าสู่ระบบ</a>
         </div>
     </div>
-    <div class="main-container">
-        <div class="large-frame">
-            <article class="small-frame">
-                <p class="device-name">ชื่ออุปกรณ์: cc</p>
-                <img src="https://i.pinimg.com/564x/da/28/aa/da28aad2f8721ec2148c496ee658008f.jpg" alt="รูป" width="100" height="100">
-                <p class="device-info">Name: vv</p>
-                <p class="device-info">Phone: 0000</p>
-            </article>
+    
+
+        <div class="row">
+            {% for item in page_obj %}
+                <div class="col-md-4">
+                    <div class="product-card">
+                        <img src="{{ item.image_url }}" alt="{{ item.title }}" class="product-image">
+                        <span class="product-label">{{ item.title }}</span>
+                        <!-- Placeholder for product text -->
+                        <p>xxxxxxxx</p>
+                    </div>
+                </div>
+                
+
+            {% empty %}
+                <p>ไม่พบอุปกรณ์ที่ลงทะเบียน.</p>
+            {% endfor %}
         </div>
-        <div class="large-frame">
-            <article class="small-frame">
-                <p class="device-name">ชื่ออุปกรณ์: cc</p>
-                <img src="https://i.pinimg.com/564x/da/28/aa/da28aad2f8721ec2148c496ee658008f.jpg" alt="รูป" width="100" height="100">
-                <p class="device-info">Name: vv</p>
-                <p class="device-info">Phone: 0000</p>
-            </article>
+        <form method="GET" action="{% url 'item_list' %}">
+            <select name="category">
+                <option value="">เลือกหมวดหมู่</option>
+                <option>33</option>
+                
+                {% for cat in categories %}
+                    <option value="{{ cat.name }}">{{ cat.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="q" placeholder="ค้นหาสินค้า...">
+            <button type="submit">ค้นหา</button>
+        </form>
+        
+        <h2>Items Posted by {{ profile_user.username }}</h2>
+        
+        <ul>
+            {% for item in items %}
+            <li><a href="{% url 'item_detail' item.id %}">{{ item.title }}</a></li>
+            {% empty %}
+            <li>No items posted yet.</li>
+            {% endfor %}
+        </ul>
+        
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; หน้าแรก</a>
+                <a href="?page={{ page_obj.previous_page_number }}">ก่อนหน้า</a>
+            {% endif %}
+            
+            <span class="current">
+                หน้า {{ page_obj.number }} จาก {{ page_obj.paginator.num_pages }}.
+            </span>
+            
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">ถัดไป</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">หน้าสุดท้าย &raquo;</a>
+            {% endif %}
+        </span>
         </div>
-        <div class="large-frame">
-            <article class="small-frame">
-                <p class="device-name">ชื่ออุปกรณ์: cc</p>
-                <img src="https://i.pinimg.com/564x/da/28/aa/da28aad2f8721ec2148c496ee658008f.jpg" alt="รูป" width="100" height="100">
-                <p class="device-info">Name: vv</p>
-                <p class="device-info">Phone: 0000</p>
-            </article>
-        </div>
-        <div class="large-frame">
-            <article class="small-frame">
-                <p class="device-name">ชื่ออุปกรณ์: cc</p>
-                <img src="https://i.pinimg.com/564x/da/28/aa/da28aad2f8721ec2148c496ee658008f.jpg" alt="รูป" width="100" height="100">
-                <p class="device-info">Name: vv</p>
-                <p class="device-info">Phone: 0000</p>
-            </article>
-        </div>
+    
+        
+    
+    </div>
         
     </div>
+</div>
 </body>
 </html>

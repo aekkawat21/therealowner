@@ -3,7 +3,7 @@ from .models import Item ,UserProfile
 from django.shortcuts import get_object_or_404
 from .forms import ItemForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm ,ReviewForm
+from .forms import UserRegisterForm 
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.templatetags.static import static
@@ -22,7 +22,7 @@ def home(req):
 
 def item_list(request):
     item_list = Item.objects.all()
-    paginator = Paginator(item_list, 10)  # แสดง 10 สินค้าต่อหน้า
+    paginator = Paginator(item_list, 10)  
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'app/item_list.html', {'page_obj': page_obj})
@@ -30,21 +30,10 @@ def item_list(request):
 
 def item_detail(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
-    reviews = item.reviews.all()
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            review = review_form.save(commit=False)
-            review.item = item
-            review.author = request.user
-            review.save()
-            return redirect('item_detail', item_id=item_id)
-    else:
-        review_form = ReviewForm()
 
-    return render(request, 'app/item_detail.html', {
-        'item': item, 'reviews': reviews, 'review_form': review_form
-    })
+    
+    return render(request,'app/item_detail.html',{'item':item})
+    
 
 
 def register(request):
@@ -66,7 +55,22 @@ def profile(request):
         'user': user,
         'profile': profile
     }
+    # ส่งตัวแปร context ไปยังเทมเพลตอย่างถูกต้อง
     return render(request, 'registration/profile.html', context)
+
+@login_required
+def create_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user.userprofile)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user  # Set the user to the currently logged-in user
+            user_profile.save()
+            messages.success(request, 'Your profile has been updated.')
+            return redirect('profile')  # Redirect to the profile page
+    else:
+        form = UserProfileForm(instance=request.user.userprofile)
+    return render(request, 'registration/create_profile.html', {'form': form})
 
 @login_required
 def create_item(request):
@@ -104,22 +108,15 @@ def delete_item(request, item_id):
         return redirect('item_list')
     return render(request, 'app/delete_item.html', {'item': item})
 
-def view_user_profile(request, username):
-    user = get_object_or_404(User, username=username)
-    items = Item.objects.filter(owner=user)
-    return render(request, 'registration/user_profile.html', {'profile_user': user, 'items': items})
-
-@login_required
-def edit_user_profile(request):
-    if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=request.user.userprofile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated.')
-            return redirect('view_user_profile', username=request.user.username)
-    else:
-        form = UserProfileForm(instance=request.user.userprofile)
-    return render(request, 'registration/edit_user_profile.html', {'form': form})
 
 
+
+def edit_password(req):
+    return render(req, 'registration/edit_password.html')
+
+def Trading_history(req):
+    return render(req, 'registration/Trading_history.html')
+
+def edit_Trading_history(req):
+    return render(req, 'registration/edit_Trading_history.html')
 

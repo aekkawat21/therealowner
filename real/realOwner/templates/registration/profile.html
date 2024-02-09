@@ -1,17 +1,15 @@
 
 {% block content %}
-<h1>{{ user.username }}'s Profile</h1>
-<p>Name: {{ user.username }}</p>
-<p>Email: {{ user.email }}</p>
-<p>Registration Date: {{ user.date_joined }}</p>
-<p>Age: {{ profile.age }}</p>
-<p>Phone Number: {{ profile.phone_number }}</p>
-
+<strong>ชื่อ:</strong> {{ profile.name }}<br>
+    <strong>อีเมล:</strong> {{ profile.email }}<br>
+    <strong>อายุ:</strong> {{ profile.age }}<br>
+    <strong>เพศ:</strong> {{ profile.get_gender_display }}<br>
+    <strong>หมายเลขโทรศัพท์:</strong> {{ profile.phone_number }}<br>
 <form method="post" action="{% url 'home' %}">
     {% csrf_token %}
     <button type="submit">ออกจากระบบ</button>
   </form>
-  <a href="{% url 'edit_user_profile' %}">แก้ไขโปรไฟล์</a>
+  <a href="{% url 'create_profile' %}">แก้ไขโปรไฟล์</a>
   <a href="{% url 'create_item' %}">ลงทะเบียน</a>
 
 {% endblock %}

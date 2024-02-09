@@ -1,0 +1,48 @@
+.item-detail {
+    /* Add your styles for the item detail view here */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.item-detail h2 {
+    /* Styles for the item title */
+    color: #333333;
+}
+
+.item-detail p {
+    /* Styles for the item details */
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.edit-btn, .delete-btn, .back-btn {
+    /* Shared button styles */
+    padding: 10px 15px;
+    margin-right: 5px;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    /* Specific style for edit button */
+    background-color: #000000; /* Bootstrap 'btn-warning' color */
+}
+
+.delete-btn {
+    /* Specific style for delete button */
+    background-color: #000000; /* Bootstrap 'btn-danger' color */
+}
+
+.back-btn {
+    /* Specific style for back button */
+    background-color: #5bc0de; /* Bootstrap 'btn-info' color */
+    border: 1px solid #46b8da;
+    color: white;
+}
+
+/* Additional responsiveness and other aesthetic styles */

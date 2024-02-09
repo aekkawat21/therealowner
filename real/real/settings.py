@@ -75,13 +75,24 @@ WSGI_APPLICATION = "real.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
+#     }
+# }
+
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # หรือ 'django.db.backends.postgresql', 'django.db.backends.sqlite3' เป็นต้น
+        'NAME': 'real',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',  # หรือ IP ของเซิร์ฟเวอร์ฐานข้อมูล
+        'PORT': '3306',  # ใช้สำหรับ MySQL, PostgreSQL มักใช้ '5432'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

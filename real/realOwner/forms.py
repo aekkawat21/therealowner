@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import UserProfile, Item ,Review
+from .models import UserProfile, Item 
 
 
 class UserRegisterForm(UserCreationForm):
@@ -19,14 +19,10 @@ class UserProfileForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['title', 'description', 'price', 'category', 'image', 'status']
+        fields = ['brand', 'model', 'color', 'category', 'image', 'serial_number']
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['phone_number', 'bio']
+        fields = ['name', 'email', 'age', 'gender', 'phone_number']
 
-class ReviewForm(forms.ModelForm):
-    class Meta:
-        model = Review
-        fields = ['text', 'rating']

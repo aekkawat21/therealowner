@@ -111,3 +111,62 @@
     /* Add any additional styling such as background, border, etc. */
   }
   
+
+  .product-card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.product-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    padding: 5px 10px;
+    margin: 0 auto 10px;
+    border-radius: 20px;
+}
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+.background {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #ffffff, #ffffff);
+  display: flex;
+  flex-grow: 1;
+  z-index: -1;
+}
+
+.background div {
+  position: absolute;
+  border-radius: 100%;
+  height: 0;
+  filter: blur(240vw);
+  opacity: 0.4;
+}
+
+.background div:nth-child(1) {
+  background: linear-gradient(132deg, #ffffff 0.00%, #ffffff 100.00%);
+  width: 150%;
+  padding-top: 150%;
+  left: 100%;
+  top: 100%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
