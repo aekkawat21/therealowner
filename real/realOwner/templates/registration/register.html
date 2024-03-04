@@ -1,6 +1,8 @@
 
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
 <div>
     <h2>Register</h2>
     <form method="POST">
@@ -9,5 +11,13 @@
         <button type="submit">ยืนยัน</button>
         <button type="button" onclick="history.back()">กลับ</button>
     </form>
+
+    <div class="right">
+      <section class="welcome">
+          <h1>The Real Owner</h1>
+          <p>welcome to you.</p>
+      </section>
+  </div>
+
 </div>
 {% endblock %}

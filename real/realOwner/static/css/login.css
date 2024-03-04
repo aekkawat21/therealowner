@@ -4,7 +4,7 @@
     padding: 20px;
     background-color: #dddddd;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(250, 248, 248, 0.1);
     text-align: center;
 }
 
@@ -43,12 +43,12 @@
 }
 
 .btn-back {
-    background-color: #ef1010;
+    background-color: #a3a1a1;
 }
 
 .btn-submit {
-    background-color: #4CAF50;
-    color: rgb(239, 22, 22);
+    background-color: #bebfbec4;
+    color: rgb(218, 218, 218);
 }
 
-/* Additional styles for responsiveness and aesthetics may be added as required */
+

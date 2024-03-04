@@ -1,15 +1,40 @@
+{% load static %}
 
 {% block content %}
-<strong>ชื่อ:</strong> {{ profile.name }}<br>
-    <strong>อีเมล:</strong> {{ profile.email }}<br>
-    <strong>อายุ:</strong> {{ profile.age }}<br>
-    <strong>เพศ:</strong> {{ profile.get_gender_display }}<br>
-    <strong>หมายเลขโทรศัพท์:</strong> {{ profile.phone_number }}<br>
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <strong>ชื่อ:</strong> {{ profile.user }}<br>
+    <strong>อีเมล:</strong> {{ profile.user.email }}<br>
+
+    <a href="{% url 'create_profile' %}">My account</a>
+    
+    <div class="content">
+      <div class="item">
+        <div class="icon"></div>
+        <a class="name" href="/item-list/Phone" >Phone</a>
+      </div>
+      <div class="item">
+        <div class="icon"></div>
+        <a class="name" href="/item-list/Laptop">Laptop</a>
+      </div>
+      <div class="item">
+        <div class="icon"></div>
+        <div class="name">Notebook</div>
+      </div>
+      <div class="item">
+        <div class="icon"></div>
+        <div class="name">Earphones</div>
+      </div>
+      <div class="item add-item">
+        <a  href="{% url 'create_item' %}" >+</a>
+        
+      </div>
+    </div>
 <form method="post" action="{% url 'home' %}">
     {% csrf_token %}
     <button type="submit">ออกจากระบบ</button>
   </form>
-  <a href="{% url 'create_profile' %}">แก้ไขโปรไฟล์</a>
-  <a href="{% url 'create_item' %}">ลงทะเบียน</a>
+  
+  
 
+  
 {% endblock %}

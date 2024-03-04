@@ -1,172 +1,148 @@
-.container {
-    width: 100vw; /* กว้างเท่ากับ 100% ของ viewport width */
-    height: 100vh; /* สูงเท่ากับ 100% ของ viewport height */
-    margin: 0; /* ไม่มีระยะขอบ */
-    padding: 0; /* ไม่มีระยะขอบภายใน */
-    display: flex; /* ใช้ flexbox เพื่อจัดการ layout */
-    justify-content: center; /* จัดกลางแนวนอน */
-    align-items: center; /* จัดกลางแนวตั้ง */
-  }
-  
-  .card {
-    flex: 1; /* แต่ละ card จะขยายเต็มพื้นที่ที่มี */
-    margin: 10px; /* ระยะขอบรอบ card */
-  }
-  
-  body {
+body, html {
     margin: 0;
     padding: 0;
-    background: #f0f0f0; /* สีพื้นหลัง */
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    
   }
   
-  .card img {
-    width: 100%; /* ภาพขยายเต็ม card */
-    height: auto; /* ความสูงปรับตามสัดส่วน */
-  }
-  
-  .card-text {
-    font-size: 1.5vw; /* ขนาดตัวอักษรขึ้นอยู่กับขนาดของ viewport */
-  }
-  
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-
-.button-container {
+  .header {
     display: flex;
-    margin: 10px;
-}
-
-.button {
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
-    font-size: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  
+  .header-circle {
+    background-color: grey;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 20px;
+  }
+  
+  .header h1 {
+    flex-grow: 1;
     text-align: center;
+  }
+  
+  .header-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .auth-links {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .auth-links .login,
+  .auth-links .register {
     text-decoration: none;
-    background-color: #d1cecec4;
-    color: #000000;
-    border-radius: 10px;
-    margin: 10px 0;
+    color: #5f27cd; /* สีม่วงสำหรับลิงก์ */
+    font-weight: bold;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    background-color: #888;
+    color: white;
+    border: none;
     cursor: pointer;
-}
-
-.main-container {
+  }
+  
+  .btn:hover {
+    background-color: #777;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .message-box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    max-width: 600px;
+    margin: 40px auto;
+  }
+  
+  .footer {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .device-icons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    margin: 25px;
-}
-
-.large-frame {
-    border: 2px solid #333;
-    padding: 25px;
-    border-radius: 30px;
-    margin: 10px;
-}
-
-.small-frame {
-    border: 2px solid #888;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.device-name {
-    color: rgb(17, 17, 17);
-    font-family: verdana;
-    font-size: 70%;
-    text-align: center;
-}
-
-.device-info {
-    color: rgb(17, 17, 17);
-    font-family: verdana;
-    font-size: 70%;
-    text-align: center;
-}
-
-.header {
+    gap: 20px;
+  }
+  
+  .icon {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100px;
+    height: 100px;
     display: flex;
-    justify-content: space-between; /* This separates the title and auth sections */
-    align-items: center; /* Aligns items vertically in the center */
-    padding: 0 10px; /* Provides padding on the left and right */
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+   
   }
   
   .title {
-    /* Styles for the title */
-    margin-right: auto; /* This will push everything else to the right */
-  }
-  
-  .auth {
-    /* Container for registration and login */
-    display: flex;
-    gap: 10px; /* Space between registration and login */
-  }
-  
-  .registration, .login {
-    /* Styles for registration and login */
-    padding: 10px 30px; /* Example padding */
-    cursor: pointer; /* Changes the cursor to signify it's clickable */
-    /* Add any additional styling such as background, border, etc. */
-  }
-  
-
-  .product-card {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-.product-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-.product-label {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: #fff;
-    padding: 5px 10px;
-    margin: 0 auto 10px;
-    border-radius: 20px;
-}
-.pagination {
-    text-align: center;
     margin-top: 20px;
-}
-
-
-
-.background {
-  position: absolute;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to right, #ffffff, #ffffff);
-  display: flex;
-  flex-grow: 1;
-  z-index: -1;
-}
-
-.background div {
-  position: absolute;
-  border-radius: 100%;
-  height: 0;
-  filter: blur(240vw);
-  opacity: 0.4;
-}
-
-.background div:nth-child(1) {
-  background: linear-gradient(132deg, #ffffff 0.00%, #ffffff 100.00%);
-  width: 150%;
-  padding-top: 150%;
-  left: 100%;
-  top: 100%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navigation li {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 200px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  
+  .image-placeholder {
+    background-color: #ddd;
+    width: 100%;
+    height: 150px; /* Adjust as needed */
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    color: #333;
+  }

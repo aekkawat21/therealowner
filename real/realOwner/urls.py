@@ -5,24 +5,25 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('',views.home,name='home'),
     path('register/', views.register, name='register'),
-    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('accounts/profile/', views.profile, name='profile'),
     path('create_profile/', views.create_profile, name='create_profile'),
-    
-
-    
-
-    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('edit_personal_details/',views. edit_personal_details, name='edit_personal_details'),
+    path('edit-contact-channels/',views. edit_contact_channels, name='edit_contact_channels'),
+    path('edit_email/', views.edit_email, name='edit_email'),
     path('edit_password/',views.edit_password,name='edit_password'),
-    path('items/create/',views.create_item, name='create_item'),
-    path('items/', views.item_list, name='item_list'),
-    path('Trading_history/',views.Trading_history,name='Trading_history'),
-    path('items/<int:item_id>/', views.item_detail, name='item_detail'),
-    path('edit_Trading_history/',views.edit_Trading_history,name='edit_Trading_history'),
-   
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
+
+    path('item_list/<str:ct>/', views.item_list, name='item_list'),
     
-    path('items/edit/<int:item_id>/', views.edit_item, name='edit_item'),
+
+    path('create/',views.create_item, name='create_item'),
+    
+    
+    
+    path('edit-item/<int:item_id>/', views.edit_item, name='edit_item'),
     path('items/delete/<int:item_id>/', views.delete_item, name='delete_item'),
+    path('edit_password/', views.edit_password, name='edit_password'),
     
    
    

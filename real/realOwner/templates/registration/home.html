@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% block content %}
 <head>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,82 +12,29 @@
 
 </head>
 <body>
-    <div class="background">
-    <div>    
-    <header>
-        <div class="header"></div>
-        <h1 class="title" style="color:rgb(0, 0, 0); font-size:160%;">The Real Owner</h1>
-        
-    </header>
-    <div class="header-container">
-        <div class="auth">
-             <a href="{% url 'register' %}" class="button">สร้างบัญชี</a> 
-             <a href="{% url 'login' %}" class="button">เข้าสู่ระบบ</a>
-        </div>
-    </div>
-    
 
-        <div class="row">
-            {% for item in page_obj %}
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <img src="{{ item.image_url }}" alt="{{ item.title }}" class="product-image">
-                        <span class="product-label">{{ item.title }}</span>
-                        <!-- Placeholder for product text -->
-                        <p>xxxxxxxx</p>
-                    </div>
-                </div>
-                
-
-            {% empty %}
-                <p>ไม่พบอุปกรณ์ที่ลงทะเบียน.</p>
-            {% endfor %}
-        </div>
-        <form method="GET" action="{% url 'item_list' %}">
-            <select name="category">
-                <option value="">เลือกหมวดหมู่</option>
-                <option>33</option>
-                
-                {% for cat in categories %}
-                    <option value="{{ cat.name }}">{{ cat.name }}</option>
-                {% endfor %}
-            </select>
-            <input type="text" name="q" placeholder="ค้นหาสินค้า...">
-            <button type="submit">ค้นหา</button>
-        </form>
-        
-        <h2>Items Posted by {{ profile_user.username }}</h2>
-        
-        <ul>
-            {% for item in items %}
-            <li><a href="{% url 'item_detail' item.id %}">{{ item.title }}</a></li>
-            {% empty %}
-            <li>No items posted yet.</li>
-            {% endfor %}
-        </ul>
-        
-        <div class="pagination">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; หน้าแรก</a>
-                <a href="?page={{ page_obj.previous_page_number }}">ก่อนหน้า</a>
-            {% endif %}
-            
-            <span class="current">
-                หน้า {{ page_obj.number }} จาก {{ page_obj.paginator.num_pages }}.
-            </span>
-            
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">ถัดไป</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">หน้าสุดท้าย &raquo;</a>
-            {% endif %}
-        </span>
-        </div>
-    
-        
-    
+    <div class="header">
+      <div class="title">The Real Owner</div>
+      <div class="auth">
+        <a href="{% url 'register' %}" class="button">สร้างบัญชี</a> 
+         <a href="{% url 'login' %}" class="button">เข้าสู่ระบบ</a>
+      </div>
     </div>
-        
+    
+    <div class="main-content">
+      <div class="message-box">
+        <p>เว็บไซต์สำหรับลงทะเบียนอุปกรณ์ของคุณ ที่เอาไว้ช่วยจำข้อมูลอุปกรณ์ของคุณ</p>
+        <a href="{% url 'register' %}" class="btn">สร้างบัญชี</a>
+      </div>
     </div>
-</div>
-</body>
+    
+    {% for item in items %}
+    {% if item.image %}
+      <img src="{{ item.image.url }}" alt="Profile Picture">
+    {% endif %}
+    <p>ชื่อ: {{ item.user.name }}</p>
+    <p>Phone Number: {{ item.user.phone_number }}</p>
+    {% endfor %}
+  {% endblock %}
+    </body>
 </html>
